@@ -1,0 +1,37 @@
+.topMenu {
+  height: 70px;
+  background: white;
+  padding: 0 40px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.logoHolder {
+  display: flexbox;
+  align-items: center;
+
+  img {
+    width: 50px;
+  }
+
+  * {
+    color: var(--green-color);
+    font-weight: 600;
+  }
+}
+
+.timeInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .timeInfo:first-child div {
+    display: none;
+  }
+}
