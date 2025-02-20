@@ -1,17 +1,25 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AxiosError } from 'axios';
 import myAxios from '@/myAxios';
-import { useDispatch } from 'react-redux';
-import { login } from '@/store/slices/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUser, login } from '@/store/slices/authSlice';
+import { AppDispatch, RootState } from '@/store';
 
 const AuthForm = () => {
+  const { isAuth } = useSelector((state: RootState) => state.auth);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [isLogin, setIsLogin] = useState(false);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    if (!isAuth) {
+      dispatch(fetchUser());
+    }
+  }, []);
 
   const setCookie = (name: string, value: string, days: number) => {
     const date = new Date();

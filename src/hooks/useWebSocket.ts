@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 const WS_URL = process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:5000';
 
 export const useWebSocket = () => {
-  const [userCount, setUserCount] = useState(0);
+  const [userCount, setUserCount] = useState(1);
 
   useEffect(() => {
     const socket = new WebSocket(WS_URL);
